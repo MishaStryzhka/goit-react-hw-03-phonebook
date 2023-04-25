@@ -25,7 +25,7 @@ class Phonebook extends Component {
     }
 
     onSubmit = (user) => {
-        if (this.state.contacts.find(contact => {
+        if (this.state.contacts && this.state.contacts.find(contact => {
             const normalizeUser = user.name.toLowerCase();
             return contact.name.toLowerCase() === normalizeUser
         })) { alert("Даний контакт вже є в телефонній") }
