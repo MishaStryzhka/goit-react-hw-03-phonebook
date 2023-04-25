@@ -31,7 +31,9 @@ class Phonebook extends Component {
         })) { alert("Даний контакт вже є в телефонній") }
         else {
             const newUser = { id: nanoid(), ...user }
-            return this.setState((prefState) => ({ ...prefState, contacts: [...prefState.contacts, newUser] }))
+            return this.state.contacts
+                ? this.setState((prefState) => ({ ...prefState, contacts: [...prefState.contacts, newUser] }))
+                : this.setState({ contacts: [newUser] })
         }
     }
 
