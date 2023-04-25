@@ -49,9 +49,11 @@ class Phonebook extends Component {
 
         const normalizedFilter = filter.toLowerCase();
 
-        console.log(contacts)
+        if (contacts) {
+            return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter))
+        };
 
-        return contacts.filter(contact => contact.name.toLowerCase().includes(normalizedFilter))
+        return []
 
     }
 
