@@ -14,13 +14,18 @@ class Phonebook extends Component {
     }
 
     componentDidMount = () => {
-        this.setState({ contacts: JSON.parse(localStorage.getItem(KEYCONTACTS)) })
+        if (localStorage.getItem(KEYCONTACTS)) {
+            this.setState({ contacts: JSON.parse(localStorage.getItem(KEYCONTACTS)) })
+        }
     }
 
 
-    componentDidUpdate = () => {
+    componentDidUpdate = (_, prevState) => {
         if (this.state.contacts) {
-            localStorage.setItem(KEYCONTACTS, JSON.stringify(this.state.contacts));
+            if (prevState.contacts.length !== this.state.contacts.length) {
+                console.log(this.state.contacts);
+                localStorage.setItem(KEYCONTACTS, JSON.stringify(this.state.contacts));
+            }
         }
     }
 
